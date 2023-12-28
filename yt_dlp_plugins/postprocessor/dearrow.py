@@ -13,7 +13,6 @@ SUPPORTED_EXTRACTORS = {
 
 class DeArrowPP(PostProcessor):
     def run(self, info):
-        #print(info['title'])
         extractor = info['extractor_key']
         if extractor not in SUPPORTED_EXTRACTORS:
             self.to_screen(f'{self.PP_NAME} is not supported for {extractor}')
@@ -34,5 +33,4 @@ class DeArrowPP(PostProcessor):
 
         info['title'] = info['DEARROW']['response']['titles'][0]['title']
 
-        #print(info['title'])
         return [], info
