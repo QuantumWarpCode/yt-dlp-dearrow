@@ -17,6 +17,7 @@ class DeArrowPP(PostProcessor):
 
         # Store the original title
         info['original_title'] = info.get('title', '')
+        info['dearrow_title'] = 'NA'
         
         # Check if the title is present in the API response and update accordingly
         if 'titles' in api_data and api_data['titles']:
@@ -26,6 +27,7 @@ class DeArrowPP(PostProcessor):
 
                 # Update the title
                 info['title'] = new_title
+                info['dearrow_title'] = new_title
         else:
             self.to_screen("No new title found in the API response.")
             # print(api_data)     
