@@ -1,12 +1,5 @@
 from yt_dlp.postprocessor.common import PostProcessor
 
-# Update this with the actual field mappings and API URL
-DEARROW_FIELDS = {
-    'title': 'dearrow_title',  # Example mapping
-    # Add other fields as necessary
-}
-DEARROW_API_URL = 'https://sponsor.ajay.app/api/branding?videoID='  # Replace with actual API URL
-
 SUPPORTED_EXTRACTORS = {
     'Youtube',
 }
@@ -22,15 +15,18 @@ class DeArrowPP(PostProcessor):
         api_data = self._download_json(
             f'https://sponsor.ajay.app/api/branding?videoID={info["id"]}') or {}
 
-        info['DEARROW'] = {
-            'response': api_data,
-            'original': {k: info.get(k) for k in DEARROW_FIELDS.keys()}
-        }
-        
-        # RYD method
-        #if api_data:
-        #    info.update({k: api_data.get(v) for k, v in DEARROW_FIELDS.items()})
+        # Check if the title is present in the API response and update accordingly
+        if 'titles' in api_data and api_data['titles']:
+            new_title = api_data['titles'][0].get('title')
+            if new_title:
+                # Store the original title
+                info['original_title'] = info.get('title', '')
+                self.to_screen(f'Original title: {info["original_title"]}')
 
-        info['title'] = info['DEARROW']['response']['titles'][0]['title']
+                # Update the title
+                info['title'] = new_title
+        else:
+            self.to_screen("No new title found in the API response.")
+            # print(api_data)     
 
         return [], info
