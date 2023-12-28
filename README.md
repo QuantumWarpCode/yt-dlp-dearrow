@@ -1,6 +1,6 @@
 A [yt-dlp](https://github.com/yt-dlp/yt-dlp) postprocessor [plugin](https://github.com/yt-dlp/yt-dlp#plugins) for [DeArrow](https://dearrow.ajay.app/).
 
-Many thanks to https://github.com/topher-nullset and the RYD plugin for some code.
+Will modify the title variable to the first return from DeArrow, if any. Does not change on a null response. The original title should be useable with %(original_title)s
 
 ## Installation
 
@@ -16,5 +16,9 @@ See [yt-dlp installing plugins](https://github.com/yt-dlp/yt-dlp#installing-plug
 ## Usage
 
 Pass `--use-postprocessor DeArrow:when=pre_process` to activate the PostProcessor
+
+## Credits
+
+Many thanks to https://github.com/topher-nullset and the RYD plugin for some code.
 
 Uses SponsorBlock(DeArrow) data licensed used under CC BY-NC-SA 4.0 from https://sponsor.ajay.app/.
