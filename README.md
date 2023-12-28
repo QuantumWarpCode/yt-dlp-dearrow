@@ -16,3 +16,5 @@ See [yt-dlp installing plugins](https://github.com/yt-dlp/yt-dlp#installing-plug
 ## Usage
 
 Pass `--use-postprocessor DeArrow:when=pre_process` to activate the PostProcessor
+
+Uses SponsorBlock(DeArrow) data licensed used under CC BY-NC-SA 4.0 from https://sponsor.ajay.app/.
