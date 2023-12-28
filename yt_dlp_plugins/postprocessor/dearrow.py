@@ -15,12 +15,13 @@ class DeArrowPP(PostProcessor):
         api_data = self._download_json(
             f'https://sponsor.ajay.app/api/branding?videoID={info["id"]}') or {}
 
+        # Store the original title
+        info['original_title'] = info.get('title', '')
+        
         # Check if the title is present in the API response and update accordingly
         if 'titles' in api_data and api_data['titles']:
             new_title = api_data['titles'][0].get('title')
             if new_title:
-                # Store the original title
-                info['original_title'] = info.get('title', '')
                 self.to_screen(f'Original title: {info["original_title"]}')
 
                 # Update the title
