@@ -17,6 +17,8 @@ See [yt-dlp installing plugins](https://github.com/yt-dlp/yt-dlp#installing-plug
 
 Pass `--use-postprocessor DeArrow:when=pre_process` to activate the PostProcessor
 
+Pass `--use-postprocessor "DeArrow:when=pre_process;SelectTitle=True"` if you want to choose from the available DeArrow titles
+
 ## Credits
 
 Many thanks to https://github.com/topher-nullset and the RYD plugin for some code.
