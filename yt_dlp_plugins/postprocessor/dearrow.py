@@ -5,8 +5,16 @@ SUPPORTED_EXTRACTORS = {
 }
 
 class DeArrowPP(PostProcessor):
+    def __init__(self, downloader=None, select_title=False, **kwargs):
+        super().__init__(downloader)
+        self._kwargs = kwargs
+        self.select_title = 'SelectTitle' in kwargs
+    
     def run(self, info):
         extractor = info['extractor_key']
+        self.to_screen(f'Received kwargs: {self._kwargs}')
+        self.to_screen(f'select_title is set to: {self.select_title}')
+
         if extractor not in SUPPORTED_EXTRACTORS:
             self.to_screen(f'{self.PP_NAME} is not supported for {extractor}')
             return [], info
@@ -20,7 +28,7 @@ class DeArrowPP(PostProcessor):
             titles = [title.get('title') for title in api_data['titles'] if title.get('title')]
 
             # If multiple titles are found, let the user choose
-            if len(titles) > 1:
+            if len(titles) > 1 and self.select_title:
                 self.to_screen("Multiple titles found. Please choose one:")
                 for i, title in enumerate(titles):
                     self.to_screen(f"{i + 1}: {title}")
@@ -49,4 +57,3 @@ class DeArrowPP(PostProcessor):
             self.to_screen("No new title found in the API response.")
 
         return [], info
-
