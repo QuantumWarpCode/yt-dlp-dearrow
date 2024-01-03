@@ -21,6 +21,6 @@ Pass `--use-postprocessor "DeArrow:when=pre_process;SelectTitle=True"` if you wa
 
 ## Credits
 
-Many thanks to https://github.com/topher-nullset and the RYD plugin for some code.
+Many thanks to [Chris C.](https://github.com/topher-nullset) and the RYD plugin for some code.
 
 Uses SponsorBlock(DeArrow) data licensed used under CC BY-NC-SA 4.0 from https://sponsor.ajay.app/.
