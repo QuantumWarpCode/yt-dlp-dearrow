@@ -17,8 +17,10 @@ See [yt-dlp installing plugins](https://github.com/yt-dlp/yt-dlp#installing-plug
 
 Pass `--use-postprocessor DeArrow:when=pre_process` to activate the PostProcessor
 
+Pass `--use-postprocessor "DeArrow:when=pre_process;SelectTitle=True"` if you want to choose from the available DeArrow titles
+
 ## Credits
 
-Many thanks to https://github.com/topher-nullset and the RYD plugin for some code.
+Many thanks to [Chris C.](https://github.com/topher-nullset) and the RYD plugin for some code.
 
 Uses SponsorBlock(DeArrow) data licensed used under CC BY-NC-SA 4.0 from https://sponsor.ajay.app/.
